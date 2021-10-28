@@ -98,7 +98,8 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 124247952}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: b588ddf5b00cfaf4ca8539683e2ad723,
+    type: 2}
 --- !u!196 &5
 NavMeshSettings:
   serializedVersion: 2
@@ -123,67 +124,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!850595691 &124247952
-LightingSettings:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Settings.lighting
-  serializedVersion: 3
-  m_GIWorkflowMode: 1
-  m_EnableBakedLightmaps: 1
-  m_EnableRealtimeLightmaps: 0
-  m_RealtimeEnvironmentLighting: 1
-  m_BounceScale: 1
-  m_AlbedoBoost: 1
-  m_IndirectOutputScale: 1
-  m_UsingShadowmask: 0
-  m_BakeBackend: 0
-  m_LightmapMaxSize: 1024
-  m_BakeResolution: 50
-  m_Padding: 2
-  m_TextureCompression: 0
-  m_AO: 1
-  m_AOMaxDistance: 1
-  m_CompAOExponent: 1
-  m_CompAOExponentDirect: 0
-  m_ExtractAO: 0
-  m_MixedBakeMode: 1
-  m_LightmapsBakeMode: 1
-  m_FilterMode: 1
-  m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
-  m_ExportTrainingData: 0
-  m_TrainingDataDestination: TrainingData
-  m_RealtimeResolution: 1
-  m_ForceWhiteAlbedo: 0
-  m_ForceUpdates: 0
-  m_FinalGather: 0
-  m_FinalGatherRayCount: 256
-  m_FinalGatherFiltering: 1
-  m_PVRCulling: 1
-  m_PVRSampling: 1
-  m_PVRDirectSampleCount: 32
-  m_PVRSampleCount: 512
-  m_PVREnvironmentSampleCount: 512
-  m_PVREnvironmentReferencePointCount: 2048
-  m_LightProbeSampleCountMultiplier: 4
-  m_PVRBounces: 2
-  m_PVRMinBounces: 2
-  m_PVREnvironmentMIS: 0
-  m_PVRFilteringMode: 0
-  m_PVRDenoiserTypeDirect: 0
-  m_PVRDenoiserTypeIndirect: 0
-  m_PVRDenoiserTypeAO: 0
-  m_PVRFilterTypeDirect: 0
-  m_PVRFilterTypeIndirect: 0
-  m_PVRFilterTypeAO: 0
-  m_PVRFilteringGaussRadiusDirect: 1
-  m_PVRFilteringGaussRadiusIndirect: 5
-  m_PVRFilteringGaussRadiusAO: 2
-  m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-  m_PVRFilteringAtrousPositionSigmaIndirect: 2
-  m_PVRFilteringAtrousPositionSigmaAO: 1
 --- !u!1 &827460508
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +136,7 @@ GameObject:
   - component: {fileID: 827460512}
   - component: {fileID: 827460510}
   - component: {fileID: 827460509}
+  - component: {fileID: 827460516}
   - component: {fileID: 827460515}
   - component: {fileID: 827460514}
   m_Layer: 0
@@ -287,56 +228,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 827460508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b69c28581428da469438d7d5901b8ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 91c13af6cca7b1f44bd652947a2f2bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suitClub: {fileID: 21300000, guid: f2e3abd22e9ae4d17ab5c0659ff3e024, type: 3}
-  suitDiamond: {fileID: 21300000, guid: f8c2745f3b53149c595d8fde43185468, type: 3}
-  suitHeart: {fileID: 21300000, guid: 3f3ffa8970b63467cad6ba98725b1c95, type: 3}
-  suitSpade: {fileID: 21300000, guid: a7994da692eef4500be008b80674eecb, type: 3}
-  faceSprites:
-  - {fileID: 21300000, guid: 0044ad2d99ea04858a663c3491cc9a91, type: 3}
-  - {fileID: 21300000, guid: 1b117bad312e24b2791cbc7dd2ea6d87, type: 3}
-  - {fileID: 21300000, guid: 21570ac654411438d8f6cc233ffb28e4, type: 3}
-  - {fileID: 21300000, guid: 21a6739a4135346e6956ca54075d8c25, type: 3}
-  - {fileID: 21300000, guid: 4ec6a5b1f47934636a6280e5abb475f8, type: 3}
-  - {fileID: 21300000, guid: 6f1efb7f571f948dfa995e521af3100a, type: 3}
-  - {fileID: 21300000, guid: a61ea2d4e7838406b97649cd8a3f3f34, type: 3}
-  - {fileID: 21300000, guid: c10418368653749f796f63e87cde78ec, type: 3}
-  - {fileID: 21300000, guid: c6955b0be0ed8469d8907eb75524a9d8, type: 3}
-  - {fileID: 21300000, guid: d86c46d6378144162964786d621fb0ca, type: 3}
-  - {fileID: 21300000, guid: ee100e0d0a1c04759a5a7537cf5e8752, type: 3}
-  - {fileID: 21300000, guid: ef50d4f09a2b3425fbbdb8ad5f8957b0, type: 3}
-  rankSprites:
-  - {fileID: 21300002, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300004, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300006, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300008, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300010, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300012, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300014, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300016, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300018, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300020, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300022, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300024, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300026, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300028, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300030, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300032, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  cardBack: {fileID: 21300000, guid: a8185ed8d47594bb8a3b8e2d9233f769, type: 3}
-  cardBackGold: {fileID: 21300000, guid: 8ecf4828943064b3a96f6258b54c0f11, type: 3}
-  cardFront: {fileID: 21300000, guid: 873a7658b7ec742228520c7b15510f4d, type: 3}
-  cardFrontGold: {fileID: 21300000, guid: 944dc539459fe4109b973bd4c97f68ee, type: 3}
-  prefabSprite: {fileID: 100000, guid: 12a0355f16a4e3040b7c1daff1c8ed35, type: 3}
-  prefabCard: {fileID: 100000, guid: ee93767be21efa14eaa16db1093e90b5, type: 3}
-  xmlr:
-    xmlText: 
-  cardNames: []
-  cards: []
-  decorators: []
-  cardDefs: []
-  deckAnchor: {fileID: 0}
+  suit: 
+  rank: 0
+  color: {r: 0, g: 0, b: 0, a: 1}
+  colS: Black
+  decoGOs: []
+  pipGOs: []
+  back: {fileID: 0}
+  def:
+    face: 
+    rank: 0
+    pips: []
 --- !u!114 &827460515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,8 +251,67 @@ MonoBehaviour:
   m_GameObject: {fileID: 827460508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d7d9d9d58522f4cb96693ace07ad24, type: 3}
+  m_Script: {fileID: 11500000, guid: 4935185da90833c46bd10204a3c97aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckXML: {fileID: 4900000, guid: c76312a0fb08948699e1abf935e4a957, type: 3}
+  suitClub: {fileID: 21300000, guid: 43de8a39bf96a1d4cbaec7cca86fbf1f, type: 3}
+  suitDiamond: {fileID: 21300000, guid: 9aea78b8c7b9aeb41a2cbf6b139c3642, type: 3}
+  suitHeart: {fileID: 21300000, guid: 93ddac7221754f04491134a8700e0305, type: 3}
+  suitSpade: {fileID: 21300000, guid: e6d34a83d6541d04ab614fe44fc4dd41, type: 3}
+  faceSprites:
+  - {fileID: 21300000, guid: cfaabfb07dbdec649a7653c672b38b94, type: 3}
+  - {fileID: 21300000, guid: 044186ec415bcf5479d9be918386a314, type: 3}
+  - {fileID: 21300000, guid: ed83cfbb5e5218c4786d1709ad25bd90, type: 3}
+  - {fileID: 21300000, guid: db810f125c5c0634ab16c7f81fc30848, type: 3}
+  - {fileID: 21300000, guid: 7085239ee8435024cb6dba693441b661, type: 3}
+  - {fileID: 21300000, guid: 50a63b2207efab44cbf1714b326c7674, type: 3}
+  - {fileID: 21300000, guid: 19951376670df1c4283994cd36618e40, type: 3}
+  - {fileID: 21300000, guid: 88e5bb589eab180418c4de6af37f02bc, type: 3}
+  - {fileID: 21300000, guid: 2a220cb907ffd8440bbec768db29046b, type: 3}
+  - {fileID: 21300000, guid: 46ce732700786e14e93f534bf397f820, type: 3}
+  - {fileID: 21300000, guid: 198069d1bed48b84398a3aea03037f78, type: 3}
+  - {fileID: 21300000, guid: f022ac49c33efb048813ee6885878064, type: 3}
+  rankSprites:
+  - {fileID: 21300002, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300004, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300006, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300008, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300010, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300012, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300014, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300016, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300018, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300020, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300022, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300024, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300026, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300028, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300030, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  - {fileID: 21300032, guid: b13b4ca24190e044794e28062a5315aa, type: 3}
+  cardBack: {fileID: 21300000, guid: 9ae179ed19ec39e42a0ebcee3e012d75, type: 3}
+  cardBackGold: {fileID: 0}
+  cardFront: {fileID: 21300000, guid: 24e32ec5c39a84d4a93ee9c57b22ed6a, type: 3}
+  cardFrontGold: {fileID: 0}
+  prefabSprite: {fileID: 100000, guid: 930a7814f3e7d0e4fa40b88968315f93, type: 3}
+  prefabCard: {fileID: 100000, guid: 3e3e2a7b4f9b9af4cb5c42a1bb345ebe, type: 3}
+  xmlr:
+    xmlText: 
+  cardNames: []
+  cards: []
+  decorators: []
+  cardDefs: []
+  deckAnchor: {fileID: 0}
+--- !u!114 &827460516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827460508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293fd9677f48ea3419850f81b1674658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckXML: {fileID: 4900000, guid: a91f81def95e6184f9e5bce287f564e6, type: 3}
   deck: {fileID: 0}
