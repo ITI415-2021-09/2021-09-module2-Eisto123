@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class cCard : MonoBehaviour {
-
+	public string cName;
 	public string    suit;
 	public int       rank;
 	public Color     color = Color.black;
@@ -13,27 +13,96 @@ public class cCard : MonoBehaviour {
 	public List<GameObject> pipGOs = new List<GameObject>();
 	
 	public GameObject back;  // back of card;
-	public CardDefinition def;  // from DeckXML.xml		
+	public cCardDefinition def;  // from DeckXML.xml		
+	public SpriteRenderer[] spriteRenderers;
 
 
-	public bool faceUp {
-		get {
+	void Start()
+	{
+		SetSortOrder(0);
+	}
+
+	public bool faceUp
+	{
+		get
+		{
 			return (!back.activeSelf);
 		}
-
-		set {
+		set
+		{
 			back.SetActive(!value);
+		}
+
+	}
+	virtual public void OnMouseUpAsButton()
+	{
+		print(name);
+	}
+
+
+
+	public void PopulateSpriteRenderers()
+	{
+
+		if (spriteRenderers == null || spriteRenderers.Length == 0)
+		{
+
+			spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 		}
 	}
 
 
-	// Use this for initialization
-	void Start () {
-	
+	public void SetSortingLayerName(string tSLN)
+	{
+		PopulateSpriteRenderers();
+
+		foreach (SpriteRenderer tSR in spriteRenderers)
+		{
+			tSR.sortingLayerName = tSLN;
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+
+	public void SetSortOrder(int sOrd)
+	{
+		PopulateSpriteRenderers();
+
+		foreach (SpriteRenderer tSR in spriteRenderers)
+		{
+			if (tSR.gameObject == this.gameObject)
+			{
+				tSR.sortingOrder = sOrd;
+				continue;
+			}
+			switch (tSR.gameObject.name)
+			{
+				case "back":
+					tSR.sortingOrder = sOrd + 2;
+					break;
+				case "face":
+				default:
+					tSR.sortingOrder = sOrd + 1;
+					break;
+			}
+		}
 	}
 } // class Card
+
+[System.Serializable]
+public class cDecorator
+{
+	public string type;         // For card pips, tyhpe = "pip"
+	public Vector3 loc;         // location of sprite on the card
+	public bool flip = false;   //whether to flip vertically
+	public float scale = 1.0f;
+}
+
+[System.Serializable]
+public class cCardDefinition
+{
+	public string face; //sprite to use for face cart
+	public int rank;    // value from 1-13 (Ace-King)
+	public List<cDecorator>
+					pips = new List<cDecorator>();  // Pips Used
+}
+

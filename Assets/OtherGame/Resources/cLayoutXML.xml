@@ -1,0 +1,54 @@
+<xml>
+	<!-- This file holds info for laying out the Prospector card game. -->
+	
+	<!-- The multiplier is multiplied by the x and y attributes below. -->
+	<!-- This determines how loose or tight the layout is. --> 
+	<multiplier x="1.25" y="1.5" />
+	
+	<!-- In the XML below, id is the number of the card -->
+	<!-- x and y set position -->
+	<!-- faceup is 1 if the card is face-up -->
+	<!-- layer sets the depth layer so cards overlap properly -->
+	<!-- hiddenby is the ids of cards that keep a card face-down -->
+	
+	<!-- Layer12, 12 o clock. -->
+	<slot id="0" x="0" y="6" faceup="0" layer="11" xstagger="0.15"/>
+	
+	<!-- Layer1, 1 o clock -->
+	<slot id="1" x="3" y="5.2" faceup="0" layer="0" xstagger="0.15" />
+	
+	<!-- Layer2, 2 o clock. -->
+	<slot id="2" x="5.2" y="3" faceup="0" layer="1" xstagger="0.15"/>
+
+	<!-- Layer3, 3 o clock -->
+	<slot id="3" x="6" y="0" faceup="0" layer="2" xstagger="0.15" />
+
+	<!-- Layer4, 4 o clock. -->
+	<slot id="4" x="5.2" y="-3" faceup="0" layer="3" xstagger="0.15"/>
+
+	<!-- Layer5, 5 o clock -->
+	<slot id="5" x="3" y="-5.2" faceup="0" layer="4" xstagger="0.15" />
+
+	<!-- Layer6, 6 o clock -->
+	<slot id="6" x="0" y="-6" faceup="0" layer="5" xstagger="0.15" />
+
+	<!-- Layer7, 7 o clock -->
+	<slot id="7" x="-3" y="-5.2" faceup="0" layer="6" xstagger="0.15" />
+
+	<!-- Layer8, 8 o clock. -->
+	<slot id="8" x="-5.2" y="-3" faceup="0" layer="7" xstagger="0.15"/>
+
+	<!-- Layer9, 9 o clock -->
+	<slot id="9" x="-6" y="0" faceup="0" layer="8" xstagger="0.15" />
+
+	<!-- Layer10, 10 o clock. -->
+	<slot id="10" x="-5.2" y="3" faceup="0" layer="9" xstagger="0.15"/>
+
+	<!-- Layer11, 11 o clock -->
+	<slot id="11" x="-3" y="5.2" faceup="0" layer="10" xstagger="0.15" />
+
+	<!-- Layer13, king -->
+	<slot id="13" x="0" y="0" faceup="0" layer="12" xstagger="0.15" />
+
+</xml>
+	
