@@ -23,7 +23,7 @@ public class cLayout : MonoBehaviour
     public List<cSlotDef> slotDefs;
     public cSlotDef drawPile;
     public cSlotDef discardPile;
-    public string[] sortingLayerNames = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
+    public string[] sortingLayerNames = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "Drawpile"};
 
 
     public void ReadLayout(string xmlText)
@@ -58,14 +58,7 @@ public class cLayout : MonoBehaviour
                 case "slot":
                     tSD.faceUp = (slotsX[i].att("faceup") == "1");
                     tSD.id = int.Parse(slotsX[i].att("id"));
-                    if (slotsX[i].HasAtt("hiddenby"))
-                    {
-                        string[] hiding = slotsX[i].att("hiddenby").Split(',');
-                        foreach (string s in hiding)
-                        {
-                            tSD.hiddenBy.Add(int.Parse(s));
-                        }
-                    }
+                    tSD.stagger.x = float.Parse(slotsX[i].att("xstagger"));
                     slotDefs.Add(tSD);
                     break;
                 case "drawpile":

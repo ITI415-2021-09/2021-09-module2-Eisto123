@@ -10,6 +10,8 @@
 	<!-- faceup is 1 if the card is face-up -->
 	<!-- layer sets the depth layer so cards overlap properly -->
 	<!-- hiddenby is the ids of cards that keep a card face-down -->
+	<slot type="drawpile" x="6" y="4" xstagger="0.15" layer="4"/>
+
 	
 	<!-- Layer12, 12 o clock. -->
 	<slot id="0" x="0" y="6" faceup="0" layer="11" xstagger="0.15"/>
