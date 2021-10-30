@@ -21,7 +21,8 @@ public class Clock : MonoBehaviour {
 	public cDeck					deck;
 	public cLayout layout;
 	public List<Card> drawPile;
-	public List<Card> clockPile;
+	public List<Card> clockPiles;
+	public List<List<Card>> clock;
 	public Transform layoutAnchor;
 
 	void Awake(){
@@ -73,6 +74,7 @@ public class Clock : MonoBehaviour {
 				card = Draw();
 				clockPile.Add(card);
 			}
+			
 			for (int i = 0; i < clockPile.Count; i++)
 			{
 				Card cc = clockPile[i];
