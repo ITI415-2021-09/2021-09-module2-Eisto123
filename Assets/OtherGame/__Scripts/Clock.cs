@@ -20,9 +20,9 @@ public class Clock : MonoBehaviour {
 	[Header("Set Dynamically")]
 	public cDeck					deck;
 	public cLayout layout;
-	public List<Card> drawPile;
-	public List<Card> clockPiles;
-	public List<List<Card>> clock;
+	public List<CardClock> drawPile;
+	public List<CardClock> Pile;
+	public List<List<CardClock>> clock = new List<List<CardClock>>();
 	public Transform layoutAnchor;
 
 	void Awake(){
@@ -33,27 +33,27 @@ public class Clock : MonoBehaviour {
 		deck = GetComponent<cDeck> ();
 		deck.InitDeck (deckXML.text);
 		cDeck.Shuffle(ref deck.cards);
-
 		layout = GetComponent<cLayout>();
 		layout.ReadLayout(layoutXML.text);
-		drawPile = deck.cards;
+		Pile = ConvertListCardsToListCardClock(deck.cards);
+		drawPile = Pile;
 		LayoutGame();
 	}
 
-	List<CardProspector> ConvertListCardsToListCardProspectors(List<Card> lCD)
+	List<CardClock> ConvertListCardsToListCardClock(List<Card> lCD)
 	{
-		List<CardProspector> lCP = new List<CardProspector>();
-		CardProspector tCP;
+		List<CardClock> lCP = new List<CardClock>();
+		CardClock tCP;
 		foreach (Card tCD in lCD)
 		{
-			tCP = tCD as CardProspector;
+			tCP = tCD as CardClock;
 			lCP.Add(tCP);
 		}
 		return (lCP);
 	}
-	Card Draw()
+	CardClock Draw()
 	{
-		Card cd = drawPile[0];
+		CardClock cd = drawPile[0];
 		drawPile.RemoveAt(0);
 		return (cd);
 	}
@@ -65,19 +65,22 @@ public class Clock : MonoBehaviour {
 			layoutAnchor = tGO.transform;
 			layoutAnchor.transform.position = layoutCenter;
 		}
-		Card card;
+		CardClock card;
 		foreach (cSlotDef tSD in layout.slotDefs)
         {
-			List<Card> clockPile = new List<Card>();
+			List<CardClock> clockPile = new List<CardClock>();
 			for (int i = 0; i<4; i++)
             {
 				card = Draw();
+				card.layoutID = tSD.id;
+				card.slotDef = tSD;
+				card.state = cCardState.tableau;
 				clockPile.Add(card);
 			}
-			
+
 			for (int i = 0; i < clockPile.Count; i++)
 			{
-				Card cc = clockPile[i];
+				CardClock cc = clockPile[i];
 			
 
 				cc.transform.parent = layoutAnchor;
@@ -89,12 +92,18 @@ public class Clock : MonoBehaviour {
 					-layout.slotDefs[tSD.layerID].layerID + 0.1f * i);
 				cc.faceUp = tSD.faceUp;
 			}
+			clock.Add(clockPile);
+			
 		}
-			UpdateDrawPile();
+		CardClock iniCard = clock[12][0];
+		iniCard.faceUp = true;
+		iniCard.state = cCardState.target;
+		iniCard.SetSortingLayerName("layer1");
+		UpdateDrawPile();
 	}
 	void UpdateDrawPile()
 	{
-		Card cd;
+		CardClock cd;
 
 		for (int i = 0; i < drawPile.Count; i++)
 		{
@@ -107,6 +116,16 @@ public class Clock : MonoBehaviour {
 				layout.multiplier.y * (layout.drawPile.y + i * dpStagger.y),
 				-layout.drawPile.layerID + 0.1f * i);
 			cd.faceUp = false;
+		}
+	}
+	public void CardClicked(CardClock cd)
+	{
+		switch (cd.state)
+		{
+			case cCardState.target:
+				break;
+			case cCardState.tableau:
+				break;
 		}
 	}
 }
