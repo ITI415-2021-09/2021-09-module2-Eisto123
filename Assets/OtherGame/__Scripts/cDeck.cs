@@ -169,7 +169,7 @@ public class cDeck : MonoBehaviour {
 			
 			if (card.suit =="D" || card.suit == "H") {
 				card.colS = "Red";
-				card.color = Color.red;
+				//card.color = Color.red;
 			}
 			
 			card.def = GetCardDefinitionByRank(card.rank);
