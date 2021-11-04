@@ -190,6 +190,10 @@ public class Clock : MonoBehaviour {
         {
             if (CheckForKingClear())
             {
+                if (!clock[12][0].faceUp)
+                {
+                    clock[12][0].faceUp = true;
+                }
                 CheckForGameOver();
                 clock[id - 1].Add(cc);
                 cc.state = cCardState.tableau;
