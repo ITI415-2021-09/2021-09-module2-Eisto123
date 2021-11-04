@@ -17,6 +17,7 @@ public class CardProspector : Card
     public List<CardProspector> hiddenBy = new List<CardProspector>();
     public int layoutID;
     public SlotDef slotDef;
+    public bool gold;
 
     override public void OnMouseUpAsButton()
     {
@@ -24,5 +25,6 @@ public class CardProspector : Card
 
         base.OnMouseUpAsButton();
     }
+
 
 }

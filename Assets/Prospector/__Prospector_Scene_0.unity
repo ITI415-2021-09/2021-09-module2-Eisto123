@@ -426,6 +426,7 @@ MonoBehaviour:
   gameOverText: {fileID: 0}
   roundResultText: {fileID: 0}
   highScoreText: {fileID: 0}
+  goldCardChance: 10
   deck: {fileID: 0}
   layout: {fileID: 0}
   drawPile: []
@@ -434,6 +435,8 @@ MonoBehaviour:
   tableau: []
   discardPile: []
   fsRun: {fileID: 0}
+  cardBackGold: {fileID: 21300000, guid: 8ecf4828943064b3a96f6258b54c0f11, type: 3}
+  cardFrontGold: {fileID: 21300000, guid: 944dc539459fe4109b973bd4c97f68ee, type: 3}
 --- !u!114 &827460516
 MonoBehaviour:
   m_ObjectHideFlags: 0

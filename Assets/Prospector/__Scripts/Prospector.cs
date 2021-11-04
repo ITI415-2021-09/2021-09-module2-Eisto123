@@ -21,6 +21,7 @@ public class Prospector : MonoBehaviour {
 	public Vector2 fsPosEnd = new Vector2(0.5f, 0.95f);
 	public float reloadDelay = 2f;
 	public Text gameOverText, roundResultText, highScoreText;
+	public int goldCardChance = 100;
 
 
 	[Header("Set Dynamically")]
@@ -32,6 +33,8 @@ public class Prospector : MonoBehaviour {
 	public List<CardProspector> tableau;
 	public List<CardProspector> discardPile;
 	public FloatingScore fsRun;
+	public Sprite cardBackGold;
+	public Sprite cardFrontGold;
 
 	void Awake(){
 		S = this;
@@ -135,6 +138,12 @@ public class Prospector : MonoBehaviour {
 				cp = FindCardByLayoutID(hid);
 				tCP.hiddenBy.Add(cp);
 			}
+			if (Random.Range(0, 100) < goldCardChance)
+			{
+				tCP.back.GetComponent<SpriteRenderer>().sprite = cardBackGold;
+				tCP.GetComponent<SpriteRenderer>().sprite = cardFrontGold;
+				tCP.gold = true;
+			}
 		}
 		MoveToTarget(Draw());
 		UpdateDrawPile();
@@ -155,6 +164,7 @@ public class Prospector : MonoBehaviour {
 		foreach (CardProspector cd in tableau)
 		{
 			bool faceUp = true;
+			
 			foreach (CardProspector cover in cd.hiddenBy)
 			{
 				if (cover.state == eCardState.tableau)
@@ -251,8 +261,16 @@ public class Prospector : MonoBehaviour {
 				tableau.Remove(cd); 
 				MoveToTarget(cd);
 				SetTableauFaces();
-				ScoreManager.EVENT(eScoreEvent.mine);
-				FloatingScoreHandler(eScoreEvent.mine);
+                if (cd.gold)
+                {
+					ScoreManager.EVENT(eScoreEvent.mineGold);
+					FloatingScoreHandler(eScoreEvent.mineGold);
+				}
+                else
+                {
+					ScoreManager.EVENT(eScoreEvent.mine);
+					FloatingScoreHandler(eScoreEvent.mine);
+				}
 				break;
 		}
 		CheckForGameOver();
@@ -364,6 +382,28 @@ public class Prospector : MonoBehaviour {
 			case eScoreEvent.mine:
 				FloatingScore fs;
 				Vector2 p0 = Input.mousePosition;
+				p0.x /= Screen.width;
+				p0.y /= Screen.height;
+				fsPts = new List<Vector2>();
+				fsPts.Add(p0);
+				fsPts.Add(fsPosRun);
+				fsPts.Add(fsPosMid);
+				fs = Scoreboard.S.CreateFloatingScore(ScoreManager.CHAIN, fsPts);
+
+				fs.fontSizes = new List<float>(new float[] { 4, 50, 28 });
+				if (fsRun == null)
+				{
+					fsRun = fs;
+					fs.reportFinishTo = null;
+				}
+				else
+				{
+					fs.reportFinishTo = fsRun.gameObject;
+				}
+				break;
+			
+			case eScoreEvent.mineGold:
+				p0 = Input.mousePosition;
 				p0.x /= Screen.width;
 				p0.y /= Screen.height;
 				fsPts = new List<Vector2>();
