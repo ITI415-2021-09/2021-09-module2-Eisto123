@@ -15,6 +15,7 @@ public class Clock : MonoBehaviour {
 	public float xOffset = 3;
 	public float yOffset = -2.5f;
 	public Vector3 layoutCenter;
+	public GameObject detactAreaPref;
 
 
 	[Header("Set Dynamically")]
@@ -24,6 +25,10 @@ public class Clock : MonoBehaviour {
 	public List<CardClock> Pile;
 	public List<List<CardClock>> clock = new List<List<CardClock>>();
 	public Transform layoutAnchor;
+	public bool draggingMode = false;
+	public bool cardMatch = false;
+	public GameObject area;
+
 
 	void Awake(){
 		S = this;
@@ -68,6 +73,7 @@ public class Clock : MonoBehaviour {
 		CardClock card;
 		foreach (cSlotDef tSD in layout.slotDefs)
         {
+			
 			List<CardClock> clockPile = new List<CardClock>();
 			for (int i = 0; i<4; i++)
             {
@@ -81,8 +87,6 @@ public class Clock : MonoBehaviour {
 			for (int i = 0; i < clockPile.Count; i++)
 			{
 				CardClock cc = clockPile[i];
-			
-
 				cc.transform.parent = layoutAnchor;
 
 				Vector2 dpStagger = layout.slotDefs[tSD.layerID].stagger;
@@ -92,14 +96,28 @@ public class Clock : MonoBehaviour {
 					-layout.slotDefs[tSD.layerID].layerID + 0.1f * i);
 				cc.faceUp = tSD.faceUp;
 			}
+			Vector3 pos = new Vector3(
+					layout.multiplier.x * (layout.slotDefs[tSD.layerID].x),
+					layout.multiplier.y * (layout.slotDefs[tSD.layerID].y),
+					-12);
+			setDetectArea(pos);
+			area.GetComponent<Area>().areaID = tSD.id;
 			clock.Add(clockPile);
 			
 		}
+		
 		CardClock iniCard = clock[12][0];
 		iniCard.faceUp = true;
 		iniCard.state = cCardState.target;
 		iniCard.SetSortingLayerName("layer1");
+		clock[12].Remove(iniCard);
 		UpdateDrawPile();
+	}
+
+	void setDetectArea(Vector3 pos)
+    {
+		area = Instantiate(detactAreaPref) as GameObject;
+		area.transform.position = pos;
 	}
 	void UpdateDrawPile()
 	{
@@ -118,14 +136,57 @@ public class Clock : MonoBehaviour {
 			cd.faceUp = false;
 		}
 	}
+	void UpdateDeck()
+	{
+		foreach (cSlotDef tSD in layout.slotDefs)
+		{
+			List<CardClock> clockPile = clock[tSD.id - 1];
+			for (int i = 0; i < clockPile.Count; i++)
+			{
+				CardClock cc = clockPile[i];
+				cc.transform.parent = layoutAnchor;
+
+				Vector2 dpStagger = layout.slotDefs[tSD.layerID].stagger;
+				cc.transform.localPosition = new Vector3(
+					layout.multiplier.x * (layout.slotDefs[tSD.layerID].x + i * dpStagger.x),
+					layout.multiplier.y * (layout.slotDefs[tSD.layerID].y + i * dpStagger.y),
+					-layout.slotDefs[tSD.layerID].layerID + 0.1f * i);
+			}
+		}
+	}
+	public int CheckArea(GameObject a)
+    {
+		int id = a.GetComponent<Area>().areaID;
+		return id;
+    }
+
+	public void Swap(CardClock cc, int i)
+    {
+		Debug.Log("called");
+		int id = cc.rank;
+		clock[id - 1].Add(cc);
+		cc.state = cCardState.tableau;
+		cc.SetSortingLayerName("Default");
+		UpdateDeck();
+		CardClock targetCard = clock[id - 1][0];
+		targetCard.faceUp = true;
+		targetCard.state = cCardState.target;
+		targetCard.SetSortingLayerName("layer1");
+		clock[id - 1].Remove(targetCard);
+	}
 	public void CardClicked(CardClock cd)
 	{
 		switch (cd.state)
 		{
 			case cCardState.target:
+				draggingMode = true;
 				break;
 			case cCardState.tableau:
 				break;
 		}
+	}
+	private void Update()
+	{
+		if (!draggingMode) return;
 	}
 }

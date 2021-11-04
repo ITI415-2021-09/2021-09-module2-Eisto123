@@ -371,8 +371,13 @@ MonoBehaviour:
   xOffset: 3
   yOffset: -2.5
   layoutCenter: {x: 0, y: 0, z: 0}
+  detactAreaPref: {fileID: 4343942699113163436, guid: 6517313891d8dc7459ec056c99648edd,
+    type: 3}
   deck: {fileID: 0}
   layout: {fileID: 0}
   drawPile: []
-  decks: []
+  Pile: []
   layoutAnchor: {fileID: 0}
+  draggingMode: 0
+  cardMatch: 0
+  area: {fileID: 0}

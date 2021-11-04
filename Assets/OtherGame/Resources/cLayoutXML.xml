@@ -11,10 +11,6 @@
 	<!-- layer sets the depth layer so cards overlap properly -->
 	<!-- hiddenby is the ids of cards that keep a card face-down -->
 	<slot type="drawpile" x="6" y="4" xstagger="0.15" layer="4"/>
-
-	
-	<!-- Layer12, 12 o clock. -->
-	<slot id="0" x="0" y="6" faceup="0" layer="11" xstagger="0.15"/>
 	
 	<!-- Layer1, 1 o clock -->
 	<slot id="1" x="3" y="5.2" faceup="0" layer="0" xstagger="0.15" />
@@ -48,6 +44,9 @@
 
 	<!-- Layer11, 11 o clock -->
 	<slot id="11" x="-3" y="5.2" faceup="0" layer="10" xstagger="0.15" />
+	
+	<!-- Layer12, 12 o clock. -->
+	<slot id="12" x="0" y="6" faceup="0" layer="11" xstagger="0.15"/>
 
 	<!-- Layer13, king -->
 	<slot id="13" x="0" y="0" faceup="0" layer="12" xstagger="0.15" />

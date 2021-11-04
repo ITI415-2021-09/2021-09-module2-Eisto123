@@ -24,4 +24,5 @@ public class CardProspector : Card
 
         base.OnMouseUpAsButton();
     }
+
 }
